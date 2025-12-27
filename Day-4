@@ -1,0 +1,91 @@
+int button1=2;
+int button2=3;
+int button3=4;
+int button4=5;
+int int1=6;
+int int2=7;
+int int3=8;
+int int4=9;
+int ENA=10;
+int ENB=11;
+int sensor1=A0;
+int sensor2=A1;
+int value1;
+int value2;
+int value3;
+int value4;
+int value5;
+int value6;
+int val1;
+int val2;
+
+
+void setup() {
+  pinMode(button1,INPUT);
+  pinMode(button2,INPUT);
+  pinMode(button3,INPUT);
+  pinMode(button4,INPUT);
+  pinMode(int1,OUTPUT);
+  pinMode(int2,OUTPUT);
+  pinMode(int3,OUTPUT);
+  pinMode(int4,OUTPUT);
+  pinMode(ENA,OUTPUT);
+  pinMode(ENB,OUTPUT);
+  Serial.begin(9600);
+}
+  
+
+void loop() {
+    value1 = digitalRead(button1);
+    value2 = digitalRead(button2);
+    value3 = digitalRead(button3);
+    value4 = digitalRead(button4);
+    value5 = analogRead(sensor1);
+    value6 = analogRead(sensor2);
+    val1=map(value5,0,1023,0,255);
+    analogWrite(ENA,val1);
+    Serial.print("limit : ");
+    Serial.println(val1);
+    delay(300);
+   
+    val2=map(value6,0,1023,0,255);
+    analogWrite(ENB,val2);
+    Serial.print("limit : ");
+    Serial.println(val2);
+    delay(300);
+     
+  if(value1==1){
+      digitalWrite(int1,HIGH);
+    }
+    if(value1==0){
+      digitalWrite(int1,LOW);
+    }
+    
+    
+  if(value2==1){
+      digitalWrite(int1,LOW);
+       digitalWrite(int2,HIGH);
+    }
+    if(value2==0){
+      digitalWrite(int2,LOW);
+    }
+    
+     if(value3==1){
+      digitalWrite(int3,HIGH);
+    }
+    if(value3==0){
+      digitalWrite(int3,LOW);
+    }
+    
+    
+  if(value4==1){
+      digitalWrite(int3,LOW);
+       digitalWrite(int4,HIGH);
+    }
+    if(value4==0){
+      digitalWrite(int4,LOW);
+    }
+    
+    
+}
+    
